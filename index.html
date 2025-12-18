@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HBD Baiq Sherli Putri Utami</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Great+Vibes&display=swap");
+
+      :root {
+        --primary: #9b2c2c;
+        --cream: #fffdd0;
+        --accent: #e53e3e;
+        --text: #555;
+        --bg-gradient: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: var(--bg-gradient);
+        height: 100vh;
+        overflow: hidden; /* Mencegah scroll pada body utama */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text);
+      }
+
+      /* Container Kartu */
+      .container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        width: 380px;
+        max-width: 90%;
+        position: relative;
+        border: 4px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(5px);
+        z-index: 10;
+
+        /* PENTING: Agar layout tidak kacau jika foto tinggi */
+        max-height: 90vh; /* Maksimal tinggi 90% dari layar */
+        overflow-y: auto; /* Bisa discroll jika konten terlalu panjang */
+        scrollbar-width: none; /* Menyembunyikan scrollbar (Firefox) */
+      }
+
+      /* Menyembunyikan scrollbar (Chrome/Safari) */
+      .container::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* --- FOTO PROFIL (Menggunakan IMG Tag agar presisi) --- */
+      .profile-img {
+        /* Lebar fix, tinggi menyesuaikan otomatis (auto) */
+        width: 160px;
+        height: auto;
+        display: block;
+        margin: 0 auto 15px auto;
+
+        /* Style Bingkai */
+        border-radius: 15px; /* Sudut melengkung */
+        border: 3px solid var(--cream);
+        box-shadow: 0 0 0 4px var(--primary);
+
+        /* Agar gambar responsif dan tidak gepeng */
+        object-fit: cover;
+      }
+
+      /* --- CSS KUE (Tetap Sama) --- */
+      .cake-wrapper {
+        position: relative;
+        width: 200px;
+        height: 140px; /* Sedikit diperkecil agar muat */
+        margin: 20px auto 10px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        transform: scale(0.9); /* Skala sedikit diperkecil */
+      }
+
+      .plate {
+        width: 220px;
+        height: 10px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+      }
+      .layer {
+        width: 180px;
+        height: 35px;
+        border-radius: 10px;
+        position: relative;
+        z-index: 2;
+      }
+      .layer-bottom {
+        background: var(--primary);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        box-shadow: inset 0 -5px rgba(0, 0, 0, 0.1);
+      }
+      .layer-middle {
+        background: var(--cream);
+        margin: 0 auto;
+        width: 180px;
+        height: 15px;
+      }
+      .layer-top {
+        background: var(--primary);
+        height: 35px;
+        box-shadow: inset 0 -5px rgba(0, 0, 0, 0.1);
+      }
+      .icing {
+        width: 180px;
+        height: 25px;
+        background: var(--cream);
+        border-radius: 15px 15px 0 0;
+        position: relative;
+        top: 2px;
+        z-index: 3;
+      }
+      .drip {
+        position: absolute;
+        background: var(--cream);
+        width: 15px;
+        height: 15px;
+        border-radius: 0 0 10px 10px;
+        top: 20px;
+      }
+      .drip:nth-child(1) {
+        left: 20px;
+        height: 15px;
+      }
+      .drip:nth-child(2) {
+        left: 50px;
+        height: 20px;
+      }
+      .drip:nth-child(3) {
+        left: 80px;
+        height: 10px;
+      }
+      .drip:nth-child(4) {
+        right: 50px;
+        height: 18px;
+      }
+      .drip:nth-child(5) {
+        right: 20px;
+        height: 12px;
+      }
+      .candle-container {
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 4;
+        display: flex;
+        gap: 10px;
+      }
+      .candle {
+        width: 8px;
+        height: 35px;
+        background: repeating-linear-gradient(
+          45deg,
+          #fff,
+          #fff 5px,
+          #ff69b4 5px,
+          #ff69b4 10px
+        );
+        position: relative;
+        border-radius: 3px;
+      }
+      .flame {
+        width: 12px;
+        height: 20px;
+        background: #ffcc00;
+        border-radius: 50% 50% 20% 20%;
+        position: absolute;
+        top: -20px;
+        left: -2px;
+        animation: flicker 1s infinite alternate;
+        box-shadow: 0 0 10px #ffcc00;
+      }
+      @keyframes flicker {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      /* Typography */
+      h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin: 0;
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 1rem;
+        margin-top: 5px;
+        color: #444;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      p.message {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: #666;
+        margin-top: 15px;
+        padding-bottom: 10px;
+      }
+
+      /* Button */
+      .btn-open {
+        background: var(--primary);
+        border: none;
+        padding: 12px 30px;
+        color: white;
+        border-radius: 50px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: 0.3s;
+        box-shadow: 0 5px 15px rgba(155, 44, 44, 0.4);
+      }
+      .btn-open:hover {
+        transform: scale(1.05);
+        background: #7f1d1d;
+      }
+
+      /* Balloon */
+      .balloon {
+        position: absolute;
+        bottom: -100px;
+        width: 40px;
+        height: 50px;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: floatUp 10s linear infinite;
+      }
+      .balloon::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 45px;
+        background: rgba(0, 0, 0, 0.15);
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      @keyframes floatUp {
+        to {
+          transform: translateY(-120vh) rotate(20deg);
+        }
+      }
+
+      #content {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="cover">
+      <h1>Hai, Baiq Sherli!</h1>
+      <p>Ada kejutan untukmu.</p>
+      <button class="btn-open" onclick="openGift()">Buka Sekarang 🎁</button>
+    </div>
+
+    <div class="container" id="content">
+      <img src="sherli (2).jpg" alt="Foto Sherli" class="profile-img" />
+
+      <h1>Barakallah Fii Umrik</h1>
+      <h2>Baiq Sherli Putri Utami</h2>
+
+      <div class="cake-wrapper">
+        <div class="candle-container">
+          <div class="candle"><div class="flame"></div></div>
+          <div class="candle"><div class="flame"></div></div>
+          <div class="candle"><div class="flame"></div></div>
+        </div>
+        <div class="icing">
+          <div class="drip"></div>
+          <div class="drip"></div>
+          <div class="drip"></div>
+          <div class="drip"></div>
+          <div class="drip"></div>
+        </div>
+        <div class="layer layer-top"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-bottom"></div>
+        <div class="plate"></div>
+      </div>
+
+      <p class="message">
+        Semoga di pertambahan usia Sherli ini, Allah melimpahkan kebahagiaan,
+        kesehatan, dan keberkahan yang tak terputus. Tetaplah menjadi pribadi
+        yang hangat dan menyenangkan.<br />
+        <br>Jordan selalu doa'in yang terbaik buat Sherli ☺️</br>
+        <br />
+        <b>Happy Birthday! 🎂</b>
+      </p>
+
+      <audio id="lagu" loop>
+        <source src="TULUS - Monokrom.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <script>
+      function openGift() {
+        document.getElementById("cover").style.display = "none";
+        document.getElementById("content").style.display = "block";
+
+        var audio = document.getElementById("lagu");
+        audio.volume = 0.6;
+        audio
+          .play()
+          .catch((e) =>
+            console.log("Audio play failed asking for interaction")
+          );
+
+        createBalloons();
+      }
+
+      function createBalloons() {
+        const colors = ["#9b2c2c", "#e53e3e", "#fffdd0", "#ffafbd"];
+        for (let i = 0; i < 30; i++) {
+          const b = document.createElement("div");
+          b.className = "balloon";
+          b.style.left = Math.random() * 100 + "vw";
+          b.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+          b.style.animationDuration = Math.random() * 5 + 5 + "s";
+          document.body.appendChild(b);
+        }
+      }
+    </script>
+  </body>
+</html>
